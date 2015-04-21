@@ -7,7 +7,7 @@ variable OPENNEBULA_AII_FORCE ?= undef;
 variable OPENNEBULA_AII_ONHOLD ?= undef;
 
 "/system/aii/hooks/configure/" = {
-    append(nlist(
+    append(dict(
         'module', OPENNEBULA_AII_MODULE_NAME,
 
         "image", OPENNEBULA_AII_FORCE,
@@ -17,10 +17,10 @@ variable OPENNEBULA_AII_ONHOLD ?= undef;
     SELF;
 };
 
-bind "/system/aii/hooks" = nlist with validate_aii_opennebula_hooks('configure');
+bind "/system/aii/hooks" = dict with validate_aii_opennebula_hooks('configure');
 
 "/system/aii/hooks/install/" = {
-    append(nlist(
+    append(dict(
         'module', OPENNEBULA_AII_MODULE_NAME,
 
         "vm", OPENNEBULA_AII_FORCE,
@@ -30,11 +30,11 @@ bind "/system/aii/hooks" = nlist with validate_aii_opennebula_hooks('configure')
     SELF;
 };
 
-bind "/system/aii/hooks" = nlist with validate_aii_opennebula_hooks('install');
+bind "/system/aii/hooks" = dict with validate_aii_opennebula_hooks('install');
 
 # last is not so important here
 "/system/aii/hooks/remove/" = {
-    append(nlist(
+    append(dict(
         'module', OPENNEBULA_AII_MODULE_NAME,
 
         "image", OPENNEBULA_AII_FORCE,
@@ -45,16 +45,16 @@ bind "/system/aii/hooks" = nlist with validate_aii_opennebula_hooks('install');
     SELF;
 };
 
-bind "/system/aii/hooks" = nlist with validate_aii_opennebula_hooks('remove');
+bind "/system/aii/hooks" = dict with validate_aii_opennebula_hooks('remove');
 
 
 # Enable ACPI daemon
 "/system/aii/hooks/post_reboot/" = {
-    append(nlist(
+    append(dict(
         'module', OPENNEBULA_AII_MODULE_NAME
         ));
 
     SELF;
 };
 
-bind "/system/aii/hooks" = nlist with validate_aii_opennebula_hooks('post_reboot');
+bind "/system/aii/hooks" = dict with validate_aii_opennebula_hooks('post_reboot');
